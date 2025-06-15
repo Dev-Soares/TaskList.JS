@@ -1,5 +1,8 @@
 import { Tarefa } from './classTarefa';
-import { createElement, appendChild } from 'react';  
+import { createElement, appendChild } from 'react';
+
+
+
 
 export function criaItem(){
     const nomeTarefa = document.querySelector('.tarefa').value;
@@ -7,10 +10,12 @@ export function criaItem(){
         window.alert('Digite algo válido, por favor')
         return
     }
-    const listaTarefa = document.querySelector('.lista-tarefas');
+    const mostraTarefa = document.querySelector('.lista-tarefas');
     const item = document.createElement('li')
-    listaTarefa.appendChild(item)
+    mostraTarefa.appendChild(item)
     const tarefa = new Tarefa(nomeTarefa, false);
+    const listaTarefa = []
+    listaTarefa.push(tarefa)
     item.innerHTML = tarefa.nome;
     document.querySelector('.tarefa').value = ''
     return item; 
@@ -25,6 +30,5 @@ export function criaBotoes(item){
     btnDelete.innerHTML = 'X';
     item.appendChild(btnCheck);
     item.appendChild(btnDelete);
-    return btnDelete, btnCheck;
 }
 
